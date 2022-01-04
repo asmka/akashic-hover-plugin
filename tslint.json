@@ -1,20 +1,13 @@
 {
   "defaultSeverity": "error",
-  "extends": [
-      "tslint:recommended"
-  ],
+  "extends": ["tslint:recommended"],
   "jsRules": {},
   "rules": {
-    "align": [true,
-      "parameters",
-      "statements"
-    ],
+    "align": [true, "parameters", "statements"],
     "array-type": [true, "array"],
     "ban": false,
     "class-name": true,
-    "comment-format": [true,
-      "check-space"
-    ],
+    "comment-format": [true, "check-space"],
     "curly": false,
     "eofline": true,
     "forin": true,
@@ -25,34 +18,34 @@
     "max-classes-per-file": [false, 1],
     "max-line-length": [false, 140],
     "member-access": [false],
-    "member-ordering": [true, {
-      "order": [
-        "public-static-field",
-        "private-static-field",
-        "public-instance-field",
-        "private-instance-field",
-        "public-constructor",
-        "private-constructor",
-        "public-instance-method",
-        "protected-instance-method",
-        "private-instance-method"
-      ]
-    }],
+    "member-ordering": [
+      true,
+      {
+        "order": [
+          "public-static-field",
+          "private-static-field",
+          "public-instance-field",
+          "private-instance-field",
+          "public-constructor",
+          "private-constructor",
+          "public-instance-method",
+          "protected-instance-method",
+          "private-instance-method"
+        ]
+      }
+    ],
     "object-literal-shorthand": false,
     "prefer-for-of": false,
-    "trailing-comma": [true, {
-      "multiline": "never",
-      "singleline": "never"
-    }],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ],
     "no-arg": true,
     "no-bitwise": false,
-    "no-console": [true,
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-variable": true,
@@ -67,7 +60,8 @@
     "no-use-before-declare": false,
     "no-var-requires": true,
     "object-literal-sort-keys": false,
-    "one-line": [true,
+    "one-line": [
+      true,
       "check-open-brace",
       "check-catch",
       "check-else",
@@ -80,21 +74,26 @@
     "radix": true,
     "semicolon": [true, "always"],
     "triple-equals": [true, "allow-null-check"],
-    "typedef": [true,
+    "typedef": [
+      true,
       "call-signature",
       "property-declaration",
       "member-variable-declaration",
       "parameter"
     ],
-    "typedef-whitespace": [true, {
-      "call-signature": "nospace",
-      "index-signature": "nospace",
-      "parameter": "nospace",
-      "property-declaration": "nospace",
-      "variable-declaration": "nospace"
-    }],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
     "variable-name": false,
-    "whitespace": [true,
+    "whitespace": [
+      true,
       "check-branch",
       "check-decl",
       "check-operator",
