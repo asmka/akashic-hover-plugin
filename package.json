@@ -11,7 +11,7 @@
     "lint:md": "remark ./*.md --frail --no-stdout --quiet --rc-path ./.remarkrc",
     "build": "rimraf ./lib && tsc"
   },
-  "author": "DWANGO Co., Ltd.",
+  "author": "dff9th",
   "license": "MIT",
   "files": [
     "lib",
@@ -37,9 +37,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/akashic-games/akashic-hover-plugin.git"
+    "url": "https://github.com/dff9th/akashic-hover-plugin.git"
   },
   "publishConfig": {
-    "@akashic-extension:registry": "https://registry.npmjs.org/"
+    "@dff9th:registry": "https://registry.npmjs.org/"
   }
 }
