@@ -12,9 +12,6 @@
   },
   "author": "",
   "license": "",
-  "dependencies": {
-    "@akashic-extension/akashic-hover-plugin": "file:.."
-  },
   "devDependencies": {
     "@akashic/akashic-cli-scan": "~0.15.0",
     "@akashic/akashic-engine": "~3.2.2",
@@ -25,5 +22,8 @@
     "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "typescript": "~4.5.4"
+  },
+  "dependencies": {
+    "@akashic-extension/akashic-hover-plugin": "file:.."
   }
 }

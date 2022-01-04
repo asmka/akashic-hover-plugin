@@ -1,4 +1,5 @@
 import { HoverableE } from "./HoverableE";
+import { HoveredEvent, HoveringEvent, UnhoveredEvent } from "./HoverEvent";
 
 /**
  * コンバータオプション。
@@ -23,8 +24,10 @@ export class Converter {
     const hoverableE = e as HoverableE;
     hoverableE.hoverable = true;
     hoverableE.touchable = true;
-    hoverableE.hovered = hoverableE.hovered || new g.Trigger<void>();
-    hoverableE.unhovered = hoverableE.unhovered || new g.Trigger<void>();
+    hoverableE.hovered = hoverableE.hovered || new g.Trigger<HoveredEvent>();
+    hoverableE.hovering = hoverableE.hovering || new g.Trigger<HoveringEvent>();
+    hoverableE.unhovered =
+      hoverableE.unhovered || new g.Trigger<UnhoveredEvent>();
     if (opts) {
       if (opts.cursor) hoverableE.cursor = opts.cursor;
     }
@@ -41,8 +44,11 @@ export class Converter {
       hoverableE.hovered.destroy();
       delete hoverableE.hovered;
     }
+    if (hoverableE.hovering && !hoverableE.hovering.destroyed()) {
+      hoverableE.hovering.destroy();
+      delete hoverableE.hovering;
+    }
     if (hoverableE.unhovered && !hoverableE.unhovered.destroyed()) {
-      hoverableE.unhovered.fire();
       hoverableE.unhovered.destroy();
       delete hoverableE.unhovered;
     }

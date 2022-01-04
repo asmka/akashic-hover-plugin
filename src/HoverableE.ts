@@ -1,3 +1,4 @@
+import { HoveredEvent, HoveringEvent, UnhoveredEvent } from "./HoverEvent";
 /**
  * ホバー可能なエンティティ
  */
@@ -12,11 +13,15 @@ export interface HoverableE extends g.E {
   /**
    * このエンティティにマウスオーバーした際に発火するトリガ。
    */
-  hovered: g.Trigger<void>;
+  hovered: g.Trigger<HoveredEvent>;
   /**
    * このエンティティからマウスアウトした際に発火するトリガ。
    */
-  unhovered: g.Trigger<void>;
+  hovering: g.Trigger<HoveringEvent>;
+  /**
+   * このエンティティでマウスムーブした際に発火するトリガ。
+   */
+  unhovered: g.Trigger<UnhoveredEvent>;
   /**
    * このエンティティにマウスホバーした際に変化するカーソルの形状。
    */

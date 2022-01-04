@@ -1,4 +1,5 @@
 import { HoverableE } from "./HoverableE";
+import { HoveredEvent, HoveringEvent, UnhoveredEvent } from "./HoverEvent";
 import { HoverPluginOptions } from "./HoverPluginOptions";
 
 /**
@@ -8,6 +9,7 @@ export class HoverPlugin implements g.OperationPlugin {
   game: g.Game;
   view: HTMLElement;
   beforeHover: HoverableE | null;
+  beforePoint: g.CommonOffset | null;
   operationTrigger: g.Trigger<g.OperationPluginOperation | (number | string)[]>;
   _cursor: string;
   _showTooltip: boolean;
@@ -31,6 +33,7 @@ export class HoverPlugin implements g.OperationPlugin {
     this.game = game;
     this.view = viewInfo.view as HTMLElement;
     this.beforeHover = null;
+    this.beforePoint = null;
     this.operationTrigger = new g.Trigger();
     this._cursor = option.cursor || "pointer";
     this._showTooltip = !!option.showTooltip;
@@ -72,30 +75,57 @@ export class HoverPlugin implements g.OperationPlugin {
     if (target && target.hoverable) {
       if (target !== this.beforeHover) {
         if (this.beforeHover && this.beforeHover.hoverable) {
-          this._onUnhovered(target);
+          this._onUnhovered(target, point);
         }
-        this._onHovered(target);
+        this._onHovered(target, point);
+      } else {
+        this._onHovering(target, point);
       }
-      this.beforeHover = target;
     } else if (this.beforeHover) {
-      this._onUnhovered(this.beforeHover);
+      this._onUnhovered(this.beforeHover, point);
     }
+    this.beforePoint = point;
   }
 
-  _onHovered(target: HoverableE): void {
+  _onHovered(target: HoverableE, point: g.CommonOffset): void {
     if (target.hoverable) {
       this.view.style.cursor = target.cursor ? target.cursor : this._cursor;
       if (this._showTooltip && target.title) {
         this.view.setAttribute("title", target.title);
       }
-      target.hovered.fire();
+      const e = new HoveredEvent({
+        x: point.x - target.x,
+        y: point.y - target.y,
+      });
+      target.hovered.fire(e);
+    }
+    this.beforeHover = target;
+  }
+
+  _onHovering(target: HoverableE, point: g.CommonOffset): void {
+    if (this.beforeHover && this.beforePoint) {
+      const e = new HoveringEvent(
+        {
+          x: point.x - target.x,
+          y: point.y - target.y,
+        },
+        {
+          x: point.x - this.beforePoint.x,
+          y: point.y - this.beforePoint.y,
+        }
+      );
+      target.hovering.fire(e);
     }
   }
 
-  _onUnhovered(_target: HoverableE): void {
+  _onUnhovered(target: HoverableE, point: g.CommonOffset): void {
     this.view.style.cursor = "auto";
     if (this.beforeHover && this.beforeHover.unhovered) {
-      this.beforeHover.unhovered.fire();
+      const e = new UnhoveredEvent({
+        x: point.x - target.x,
+        y: point.y - target.y,
+      });
+      this.beforeHover.unhovered.fire(e);
       if (this._showTooltip) {
         this.view.removeAttribute("title");
       }
@@ -104,7 +134,9 @@ export class HoverPlugin implements g.OperationPlugin {
   }
 
   _onMouseOut(): void {
-    if (this.beforeHover) this._onUnhovered(this.beforeHover);
+    if (this.beforeHover && this.beforePoint) {
+      this._onUnhovered(this.beforeHover, this.beforePoint);
+    }
   }
 }
 
