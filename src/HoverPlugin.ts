@@ -5,7 +5,7 @@ import { HoverPluginOptions } from "./HoverPluginOptions";
 /**
  * ホバー機能を提供するプラグイン。
  */
-export class HoverPlugin implements g.OperationPlugin {
+class HoverPlugin implements g.OperationPlugin {
   game: g.Game;
   view: HTMLElement;
   beforeHover: HoverableE | null;
@@ -29,11 +29,11 @@ export class HoverPlugin implements g.OperationPlugin {
 
   constructor(
     game: g.Game,
-    viewInfo: g.OperationPluginViewInfo,
+    viewInfo: g.OperationPluginViewInfo | null,
     option: HoverPluginOptions = {}
   ) {
     this.game = game;
-    this.view = viewInfo.view as HTMLElement;
+    this.view = viewInfo!.view as HTMLElement; // viewInfo が必ず渡ってくるため null にはならない
     this.beforeHover = null;
     this.startPoint = null;
     this.startWindowPoint = null;
