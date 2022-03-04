@@ -24,30 +24,24 @@
 			"width": 128,
 			"height": 288,
 			"path": "image/aco.png"
-		},
-		"hover_plugin": {
-			"type": "script",
-			"path": "node_modules/@akashic-extension/akashic-hover-plugin/lib/HoverPlugin.js",
-			"global": true
 		}
 	},
 	"operationPlugins": [
 		{
-			"code": 1,
-			"script": "./node_modules/@akashic-extension/akashic-hover-plugin/lib/HoverPlugin.js",
-			"option": {
-				"showTooltip": true
-			}
+			"code": 5,
+			"script": "./node_modules/@asmka/akashic-hover-plugin/lib/HoverPlugin.js"
 		}
 	],
 	"globalScripts": [
-		"node_modules/@akashic-extension/akashic-hover-plugin/lib/Converter.js",
-		"node_modules/@akashic-extension/akashic-hover-plugin/lib/index.js"
+		"node_modules/@asmka/akashic-hover-plugin/lib/Converter.js",
+		"node_modules/@asmka/akashic-hover-plugin/lib/HoverEvent.js",
+		"node_modules/@asmka/akashic-hover-plugin/lib/HoverPlugin.js",
+		"node_modules/@asmka/akashic-hover-plugin/lib/index.js"
 	],
-	"moduleMainScripts": {
-		"@akashic-extension/akashic-hover-plugin": "node_modules/@akashic-extension/akashic-hover-plugin/lib/index.js"
-	},
 	"environment": {
 		"sandbox-runtime": "3"
+	},
+	"moduleMainScripts": {
+		"@asmka/akashic-hover-plugin": "node_modules/@asmka/akashic-hover-plugin/lib/index.js"
 	}
 }
