@@ -1,7 +1,7 @@
 # akashic-hover-plugin
 
 <p align="center">
-<img src="https://github.com/akashic-games/akashic-hover-plugin/blob/master/img/akashic.png"/>
+<img src="https://github.com/asmka/akashic-hover-plugin/blob/master/img/akashic.png"/>
 </p>
 
 **akashic-hover-plugin**は Akashic でマウスホバー可能なエンティティを利用することができるプラグインです。
@@ -99,7 +99,8 @@ hoveredRect.unhovered.add((e) => {
 ## ライセンス
 
 本リポジトリは MIT License の元で公開されています。
-詳しくは [LICENSE](https://github.com/akashic-games/akashic-hover-plugin/blob/master/LICENSE) をご覧ください。
+詳しくは [LICENSE](https://github.com/asmka/akashic-hover-plugin/blob/master/LICENSE) をご覧ください。
 
 ただし、画像ファイルおよび音声ファイルは
-[CC BY 2.1 JP](https://creativecommons.org/licenses/by/2.1/jp/) の元で公開されています。
+[akashic-games/akashic-hover-plugin](https://github.com/akashic-games/akashic-hover-plugin/blob/master/) に帰属し、
+[CC BY 2.1 JP](https://creativecommons.org/licenses/by/2.1/jp/) の下に提供されています。
