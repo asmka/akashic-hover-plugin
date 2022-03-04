@@ -4,7 +4,14 @@
 <img src="https://github.com/asmka/akashic-hover-plugin/blob/master/img/akashic.png"/>
 </p>
 
-**akashic-hover-plugin**は Akashic でマウスホバー可能なエンティティを利用することができるプラグインです。
+本リポジトリは[akashic-games/akashic-hover-plugin](https://github.com/akashic-games/akashic-hover-plugin)を
+フォーク元とし、以下の機能を追加しています。
+
+- `E#hovering`トリガ: ホバー中にマウスカーソルを移動した場合に発火するトリガ
+- 各トリガの引数としてマウスカーソル情報を含む以下イベントを提供（`onPointDown`等を参考）
+  - `HoveredEvent`
+  - `HoveringEvent`
+  - `UnhoveredEvent`
 
 実装例は `sample` ディレクトリ以下にあるサンプルプロジェクトを参照してください。
 
@@ -89,12 +96,6 @@ hoveredRect.unhovered.add((e) => {
 	rect.modified();
 });
 ```
-
-## 注意点
-
-本プラグインは **`g.OperationEvent` を生成しません。**
-本プラグインによるホバー操作を Playlog として利用したい場合は、
-利用者自身で `E#hovered`, `E#unhovered` の発火を契機とした `g.MessageEvent` の生成などを行う必要があります。
 
 ## ライセンス
 
