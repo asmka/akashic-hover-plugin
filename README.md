@@ -13,7 +13,7 @@
 [akashic-cli](https://github.com/akashic-games/akashic-cli)をインストールした後、
 
 ```sh
-akashic install @akashic-extension/akashic-hover-plugin
+akashic install @asmka/akashic-hover-plugin
 ```
 
 でインストールできます。
@@ -22,7 +22,7 @@ akashic install @akashic-extension/akashic-hover-plugin
 `g.OperationPluginManager#register()` の第一引数にはプラグインの実態、第二引数には識別コードを指定する必要があります。識別コードは対象のプラグインを開始/停止する操作に必要となります。
 
 ```javascript
-import * as hover from "@akashic-extension/akashic-hover-plugin";
+import * as hover from "@asmka/akashic-hover-plugin";
 ...
 g.game.operationPluginManager.register(hover.HoverPlugin, 5); // HoverPlugin を 識別コード 5 で 登録
 g.game.operationPluginManager.start(5); // 識別コード 5 のプラグインを開始
@@ -33,16 +33,19 @@ g.game.operationPluginManager.stop(5) // 識別コード 5 のプラグインを
 
 第三引数には次の名前のプロパティ名と対応する値を持つオブジェクトを指定することができます。
 
- * cursor
-   * 文字列 (省略可能。省略された場合 `"pointer"`)
-   * ホバー時のcursorを指定。CSSに準拠。
- * showTooltip
-   * 真偽値 (省略可能。省略された場合 `false`)
-   * ホバー時にtooltipを表示されるかどうか。
-   * 表示内容は `HoverableE#title` 。
+- cursor
+  - 文字列 (省略可能。省略された場合 `"pointer"`)
+  - ホバー時の cursor を指定。CSS に準拠。
+- showTooltip
+  - 真偽値 (省略可能。省略された場合 `false`)
+  - ホバー時に tooltip を表示されるかどうか。
+  - 表示内容は `HoverableE#title` 。
 
 ```javascript
-g.game.operationPluginManager.register(hover.HoverPlugin, 5, { cursor: "help", showTooltip: true });
+g.game.operationPluginManager.register(hover.HoverPlugin, 5, {
+  cursor: "help",
+  showTooltip: true,
+});
 ```
 
 ### コンテンツへの適用
@@ -88,8 +91,9 @@ hoveredRect.unhovered.add((e) => {
 ```
 
 ## 注意点
+
 本プラグインは **`g.OperationEvent` を生成しません。**
-本プラグインによるホバー操作をPlaylogとして利用したい場合は、
+本プラグインによるホバー操作を Playlog として利用したい場合は、
 利用者自身で `E#hovered`, `E#unhovered` の発火を契機とした `g.MessageEvent` の生成などを行う必要があります。
 
 ## ライセンス
