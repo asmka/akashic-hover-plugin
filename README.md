@@ -102,5 +102,5 @@ hoveredRect.unhovered.add((e) => {
 詳しくは [LICENSE](https://github.com/asmka/akashic-hover-plugin/blob/master/LICENSE) をご覧ください。
 
 ただし、画像ファイルおよび音声ファイルは
-[akashic-games/akashic-hover-plugin](https://github.com/akashic-games/akashic-hover-plugin/blob/master/) に帰属し、
+[akashic-games/akashic-hover-plugin](https://github.com/akashic-games/akashic-hover-plugin) に帰属し、
 [CC BY 2.1 JP](https://creativecommons.org/licenses/by/2.1/jp/) の下に提供されています。
